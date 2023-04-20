@@ -1,7 +1,13 @@
 {% load static %}
 
+
+
 <div class="nav-container" id="nav-container">
-  <!--Navbar 1 Level -->
+
+<div class="container">
+
+
+<!--Navbar 1 Level -->
 <nav class="navbar navbar-dark default-color main-nav" role="navigation" id="main-nav">
 
   <!-- Logo -->
@@ -11,45 +17,14 @@
     
   
 
-    <!-- Topnav -->
-    <ul class="nav justify-content-end topnav">
 
   
-      
-      <li class="nav-item">
-      <a class="nav-link" href="{% url 'store:kontakt' %}">Kontakt</a>
-      </li>
 
-      <li class="nav-item">
-      <a class="nav-link" href="https://gastrosortiment.ch/">Gastrozubehör</a>
-      </li>
 
-        
-    </ul>
-
-  <!-- Search form -->
-  <div class="suchform">
-  <form class="form-inline d-flex justify-content-center" action="{% url 'store:searchbar' %}">
-  {% csrf_token %}
-  
-  <button type="submit" class="bg-transparent" style="border: none;">
-    <i class="fas fa-search" style="color:var(--white)"></i>
-  </button>
-  
-  <input class="form-control form-control-sm searchbar" type="text" placeholder="Suche"
-    aria-label="Search" name="search">
-
-  </form>
-  </div>
-
-  
+  <!-- Login Logout -->
 
   {% if request.user.is_authenticated %}   
-      <!-- Bestellungen Login Logout -->
-    
-    
-
- 
+      
       <!--- Sidebar Start --->
        <nav class="navbar navbar-expand-lg navbar-light">
     
@@ -69,7 +44,7 @@
             </li> 
         
             <li>
-              <a href="">Inserate</a>
+              <a  href="">Inserate</a>
             </li>
             <li>
               <a href="{% url 'account_logout' %}">Abmelden</a>
@@ -113,6 +88,8 @@
               <li class="nav-item"><a class="nav-link" href="{% url 'store:marktplatz_jobs' %}">Jobs</a>
               </li>
 
+              <li class="nav-item"><a class="nav-link" href="https://gastrosortiment.ch/" target="__blank">Gastrozubehör</a></li>
+
 
               {% if request.user.is_authenticated %}
               {% if request.user.profile.firmenname %}
@@ -154,6 +131,8 @@
               <li class="nav-item mr-5"><a class="nav-link" href="{% url 'store:marktplatz_jobs' %}">Jobs</a>
               </li>
 
+               <li class="nav-item"><a class="nav-link" href="https://gastrosortiment.ch/" target="__blank">Gastrozubehör</a></li>
+
 
               {% if request.user.is_authenticated %}
               {% if request.user.profile.firmenname %}
@@ -171,9 +150,9 @@
 </nav>
 <!-- Navbar END --> 
 
-
-
-
-
-
 </div>
+<!-- Container END --> 
+
+
+
+</div><!-- Navbar Container --> 
