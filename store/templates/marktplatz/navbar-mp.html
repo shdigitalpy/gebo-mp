@@ -44,7 +44,7 @@
             </li> 
         
             <li>
-              <a  href="">Inserate</a>
+             <a class="nav-link btn btn-outline-warning ml-3" href="{% url 'store:myinserate' %}">Inserate</a>
             </li>
             <li>
               <a href="{% url 'account_logout' %}">Abmelden</a>
@@ -93,7 +93,7 @@
 
               {% if request.user.is_authenticated %}
               {% if request.user.profile.firmenname %}
-              <li class="nav-item"><a class="nav-link btn btn-outline-warning " href="{% url 'store:myinserate' %}">Inserate</a>
+              <li class="nav-item"><a class="nav-link btn btn-outline-warning ml-3" href="{% url 'store:myinserate' %}">Inserate</a>
               </li>
                 {% else %}
                 {% endif %}
@@ -136,7 +136,7 @@
 
               {% if request.user.is_authenticated %}
               {% if request.user.profile.firmenname %}
-              <li class="nav-item"><a class="nav-link btn btn-outline-warning " href="{% url 'store:myinserate' %}">Inserate</a>
+              <li class="nav-item"><a class="nav-link btn btn-outline-warning ml-3" href="{% url 'store:myinserate' %}">Inserate</a>
               </li>
                 {% else %}
                 {% endif %}
