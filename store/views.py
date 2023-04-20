@@ -687,7 +687,7 @@ def kontakt(request):
 			subject,
 			template,
 			email,
-			['bestellungen@gastrodichtung.ch', 'livio.bonetta@geboshop.ch'],
+			['info@gastroplatz.ch', 'sandro@sh-digital.ch'],
 		)
 
 		email.fail_silently=False

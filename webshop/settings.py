@@ -189,7 +189,7 @@ EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
-DEFAULT_FROM_EMAIL = "bestellungen@gastrodichtung.ch"
+DEFAULT_FROM_EMAIL = "info@gastroplatz.ch"
 
 #Aws storage
 AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')

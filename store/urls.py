@@ -13,6 +13,7 @@ urlpatterns = [
 
 	#marktplatz
 	path('', views.marktplatz_overview, name='marktplatz_overview'),
+	path('', views.marktplatz_overview, name='home'),
     path('marktplatz', views.marktplatz_main, name='marktplatz_main'),
     path('inserate', views.myinserate, name="myinserate"),
     path('inserate/change/<int:pk>', views.myinserate_ändern, name="myinserate_ändern"),
