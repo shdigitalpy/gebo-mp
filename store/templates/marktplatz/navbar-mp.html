@@ -61,6 +61,15 @@
   
 
       <a href="{% url 'account_login' %}" class="btn btn-outline-warning">Kunden-Login</a>
+
+      {% if request.user.is_authenticated %}
+              {% if request.user.profile.firmenname %}
+              <a class="nav-link btn btn-outline-warning ml-3" href="{% url 'store:myinserate' %}">Inserate</a>
+             
+                {% else %}
+                {% endif %}
+                {% else %}
+              {% endif %}
       
       {% endif %}
 
@@ -90,7 +99,6 @@
 
               <li class="nav-item"><a class="nav-link" href="https://gastrosortiment.ch/" target="__blank">Gastrozubehör</a></li>
 
-
               {% if request.user.is_authenticated %}
               {% if request.user.profile.firmenname %}
               <li class="nav-item"><a class="nav-link btn btn-outline-warning ml-3" href="{% url 'store:myinserate' %}">Inserate</a>
@@ -99,6 +107,7 @@
                 {% endif %}
                 {% else %}
               {% endif %}
+              
          </ul>       
       </div>  
       
@@ -134,14 +143,7 @@
                <li class="nav-item"><a class="nav-link" href="https://gastrosortiment.ch/" target="__blank">Gastrozubehör</a></li>
 
 
-              {% if request.user.is_authenticated %}
-              {% if request.user.profile.firmenname %}
-              <li class="nav-item"><a class="nav-link btn btn-outline-warning ml-3" href="{% url 'store:myinserate' %}">Inserate</a>
-              </li>
-                {% else %}
-                {% endif %}
-                {% else %}
-              {% endif %}
+              
          </ul>       
       </div>  
       
