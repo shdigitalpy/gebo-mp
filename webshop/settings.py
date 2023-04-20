@@ -18,7 +18,7 @@ import dj_database_url
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-ALLOWED_HOSTS = ['https://www.gastroplatz.ch/', 'https://127.0.0.1:8000/', 'https://gebomp.herokuapp.com/']
+ALLOWED_HOSTS = ['https://gastroplatz.ch', 'https://127.0.0.1:8000/', 'gebomp.herokuapp.com']
 
 
 if config('STAGE') == 'dev':
@@ -45,7 +45,7 @@ else:
 
     #take out for dev
     CSRF_COOKIE_SECURE = True
-    CSRF_TRUSTED_ORIGINS = ['https://www.gastroplatz.ch/', 'https://gebomp.herokuapp.com/', 'https://127.0.0.1:8000/']
+    CSRF_TRUSTED_ORIGINS = ['https://gastroplatz.ch', 'https://gebomp.herokuapp.com/', 'https://127.0.0.1:8000/']
     CSRF_COOKIE_DOMAIN = '.gastroplatz.ch'
     SECURE_SSL_REDIRECT = True
     #end
