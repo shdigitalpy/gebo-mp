@@ -48,12 +48,10 @@
 			    	<th scope="col">Firma / Profil</th>
 			    	<th scope="col">Telefon</th>
 			      <th scope="col">Profildaten <br>bearbeiten</th>
-			      <th scope="col">Rabatt</th>
 			      <th scope="col">Newsletter</th>
 			      <th scope="col">Firmendaten<br> bearbeiten</th>
 			      <th scope="col">Adresse<br> bearbeiten</th>
-			      <th scope="col">Elemente<br> Übersicht</th>
-			      <th scope="col">Elemente<br> erfassen</th>
+			      
 			      <th scope="col">Kunde löschen</th>	
 			     			      
 
@@ -70,9 +68,9 @@
 			  	{{ data.email }}</form>
 			  		</td>
 			  		<td>{% if data.profile.phone %}{{ data.profile.phone }}{% endif %}</td>
+			      
 			      <td><form method="POST" enctype="multipart/form-data">{% csrf_token %}<a type="submit"  href="{% url 'store:cms_user_bearbeiten' data.pk %}"><i class="fas fa-edit"></i></a></form></td>
 			      			      
-			      <td>{{ data.profile.rabatt }}%</td>
 			      <td>
 			      	{% if data.profile.newsletter == False %}
 			      	<p>Nein</p>
@@ -92,16 +90,6 @@
 			  	</td>
 
 
-			  	{% if data.profile.get_absolute_elemente_url %}
-			  	<td><form method="POST" enctype="multipart/form-data">{% csrf_token %}<a type="submit"  href="{{ data.profile.get_absolute_elemente_url }}"><i class="fas fa-info-circle"></i></a></form></td>
-			  	{% endif %}
-
-			  	<td>
-
-			  		<form method="POST" enctype="multipart/form-data">{% csrf_token %}<a type="submit"  href="{% url 'store:cms_elemente_create' data.profile.pk %}"><i class="fas fa-plus"></i></a></form>
-
-
-			  	</td>
 
 			  	<td><form method="POST" enctype="multipart/form-data">{% csrf_token %}<a type="submit"  href="{% url 'store:cms_kunde_löschen' data.pk %}"><i style="color:var(--red)" class="far fa-trash-alt"></i></a></form></td>
 			    

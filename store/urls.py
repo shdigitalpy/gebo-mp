@@ -31,10 +31,15 @@ urlpatterns = [
     
 
     path('cms', views.cms, name="cms"),
-    path('cms/kunden', views.cms_kunden, name='cms_kunden'),
+ 	path('cms/kunden', views.cms_kunden, name='cms_kunden'),
 	path('cms/kunden/erfassen', views.cms_kunden_erfassen, name='cms_kunden_erfassen'),
-	path('cms/kunden/firmenname/<int:user_id>', views.cms_firmenname_bearbeiten, name='cms_firmenname_bearbeiten'),
+	path('cms/user/bearbeiten/<int:pk>', views.cms_user_bearbeiten, name='cms_user_bearbeiten'),
+	path('cms/kundenadresse/bearbeiten/<int:pk>', views.cms_kundenadresse_bearbeiten, name='cms_kundenadresse_bearbeiten'),
+	path('cms/kunden/bearbeiten/<int:pk>', views.cms_kunde_bearbeiten, name='cms_kunde_bearbeiten'),
+	path('cms/kunden/löschen/<int:pk>', views.cms_kunde_löschen, name='cms_kunde_löschen'),
+
 	path('cms/user', views.cms_user, name='cms_user'),
+	path('cms/user/bearbeiten/<int:pk>', views.cms_user_bearbeiten, name='cms_user_bearbeiten'),
 
     path('cms/marktplatz', views.cms_marktplatz, name='cms_marktplatz'),
     path('cms/marktplatz/inserat/freigegeben/<int:pk>/<str:portal>', views.cms_inserat_freigeben, name="cms_inserat_freigeben"),

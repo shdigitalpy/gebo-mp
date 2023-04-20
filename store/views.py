@@ -894,7 +894,32 @@ def cms_kunde_löschen(request, pk):
 	messages.info(request, "Der Kunde wurde gelöscht.")
 	return redirect("store:cms_kunden")	
 
+@staff_member_required
+def cms_kunde_löschen(request, pk):
+	eintrag = get_object_or_404(User, pk=pk)
+	eintrag.delete()
+	messages.info(request, "Der Kunde wurde gelöscht.")
+	return redirect("store:cms_kunden")	
 
+@staff_member_required
+def cms_user_bearbeiten(request, pk):
+	kunde = get_object_or_404(User, pk=pk)
+	if request.method == "POST":
+		form = KundeEditForm(request.POST or None, request.FILES or None, instance=kunde)
+		if form.is_valid():
+			form.save()
+			return redirect('store:cms_kunden')
+
+		else:
+			messages.error(request, "Error")
+			
+	else:
+		form = KundeEditForm(request.POST or None, instance=kunde)
+		context = {
+			'form': form,
+			'kunde': kunde,
+			 }
+		return render(request, 'cms-user-bearbeiten.html', context)
 
 
 @staff_member_required
