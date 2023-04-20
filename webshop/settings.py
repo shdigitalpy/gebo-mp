@@ -18,7 +18,7 @@ import dj_database_url
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-ALLOWED_HOSTS = ['https://gastroplatz.ch', 'https://127.0.0.1:8000/', 'gebomp.herokuapp.com']
+ALLOWED_HOSTS = ['https://gastroplatz.ch', 'https://127.0.0.1:8000/', 'https://gebomp.herokuapp.com']
 
 
 if config('STAGE') == 'dev':
