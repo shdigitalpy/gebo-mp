@@ -1,0 +1,125 @@
+{% extends 'marktplatz/base.html' %}
+{% load static %}
+{% block title %}Gastronomie Marktplatz | gastrodichtung.ch{% endblock %}
+{% block meta_description %}Gastronomie Marktplatz | gastrodichtung.ch{% endblock %}
+
+{% block content %}
+
+
+<div class="container">
+    <div class="storepreview">
+      <h1 style="font-size:1.8em">Gastroverkauf - Marktplatz</h1>
+     
+     <br>
+     <a class="btn btn-success btn-sm" href="{% url 'store:marktplatz_inserat_erfassen' %}">Inserat erstellen</a>
+
+     <a class="btn btn-success btn-sm" href="{% url 'store:marktplatz_video' %}">Anleitungsvideo</a>
+
+     <br><br><br><br>
+
+      <div class="mp-flex">
+        
+        
+
+
+
+     <div class="mp-main">
+
+      <div>
+        <a href="{% url 'store:marktplatz_main' %}"><h3>Alle Kategorien</h3></a>
+        <br>
+
+        {% for category in mp_categories %}
+        
+        <ul style="list-style-type: none;padding: 0; margin:0;">
+        <a href="{% url 'store:marktplatz_main_category' category.name %}"><li>{{ category.name }}</li></a>
+        
+      </ul>
+      
+      {% endfor %}
+
+      <div>
+        <br><br>
+        <h3>Zustand</h3>
+         <br>
+
+         <a href="{% url 'store:marktplatz_main' %}"><p>Alle</p></a>
+
+        <a href="{% url 'store:marktplatz_condition' 'Gebraucht' %}"><p>Gebraucht</p></a>
+       
+         <a href="{% url 'store:marktplatz_condition' 'Neu' %}"><p>Neu</p></a>
+
+      </div>
+    </div>
+
+     </div>
+
+     <div class="right-flex"><!--wrapper -->
+     {% for ins in mp_inserate %}
+     {% if ins.is_active == True %}
+     <div class="mp-main-right">
+
+      
+      
+    <div class="inserat-flex">
+      
+    
+
+    {% if ins.image %}
+    <a href="{% url 'store:marktplatz_inserat_details' ins.slug %}" class="mp-image-wrapper">
+    <img class="mp-image" src="{{ ins.image.url }}">
+    </a>
+    {% endif %}
+    
+    
+    <div class="mp-text">
+
+    <br>
+    <h3><a href="{% url 'store:marktplatz_inserat_details' ins.slug %}">{{ ins.title }}</a></h3>
+
+    <br>
+
+    <p class="preis" style="font-size:1rem !important;">CHF {{ ins.price|floatformat:2 }} / Stück</p>
+
+    <br>
+    
+    <div class="mp-box">
+      <p>
+
+
+        {% if ins.anonym_ins == 'Nein' %}
+
+        <small>Anbieter nicht öffentlich</small>
+
+        {% else %}
+        {% if ins.mp_firmenname %}
+        {{ ins.mp_firmenname }}
+        {% endif %}
+
+       {% endif %}
+
+    </p>
+    </div>
+    
+  
+
+    </div>
+
+    </div>
+  </div>
+{% endif %}
+
+  {% endfor %}
+
+</div><!--end wrapper -->
+
+
+  </div><!-- row end -->
+   <br>   <br> <br>
+  <p>Sie suchen nach einer Möglichkeit, Ihre gebrauchten Restaurantausstattungen loszuwerden oder suchen nach einem günstigen Angebot für Ihr neues Restaurant? Dann sind Sie hier genau richtig! Unser Gastronomie Markplatz bietet Restaurants die Möglichkeit, ihre gebrauchten Waren zu verkaufen oder zu kaufen.
+
+Ob Stühle, Küchengeräte oder sogar Vakuummaschinen und Türschliesser, hier finden Sie alles, was Sie für den Betrieb Ihres Restaurants benötigen. Und das Beste daran ist, dass Sie dabei Geld sparen können, indem Sie gebrauchte Waren kaufen.</p>
+  </div><!-- storepreview end -->
+</div><!-- container end -->
+
+{% endblock content %}

@@ -1,0 +1,80 @@
+{% extends 'marktplatz/base.html' %}
+{% load static %}
+{% block title %}Gastronomie Online Marktplatz | gastrodichtung.ch{% endblock %}
+{% block meta_description %}Gastronomie Online Marktplatz | gastrodichtung.ch{% endblock %}
+
+{% block content %}
+
+
+<div class="container">
+    <div class="storepreview">
+      <h1>Online-Portal für das Gastgewerbe</h1>
+     
+    
+
+      <div class="mp-overview">
+
+        
+
+
+
+        <div class="mp-overview-box">
+
+          <div class="mp-overview-box-image">
+
+            <a href="{% url 'store:marktplatz_main' %}">
+    
+              <img class="mp-image" src="{% static '/images/marktplatz.png' %}">
+
+            </a>
+              
+
+          </div><!-- mp overview box image end -->
+
+          <div class="mp-overview-box-bottom">
+
+             <a href="{% url 'store:marktplatz_main' %}"><h2>Occasionen Marktplatz</h2></a>
+            <br>
+            <a href="{% url 'store:marktplatz_main' %}"><p>Gastronomie Occasionen für Maschinen, Kleininventar und Restposten.</p></a>
+
+          </div><!-- mp overview box bottom end -->
+
+        </div><!-- mp overview box end -->
+
+        <div class="mp-overview-box">
+
+          <div class="mp-overview-box-image">
+
+              
+              <a href="{% url 'store:marktplatz_jobs' %}">
+              <img class="mp-image" src="{% static '/images/gastro-kueche1.jpg' %}">
+
+                </a>
+              
+
+          </div><!-- mp overview box image end -->
+
+          <div class="mp-overview-box-bottom">
+            
+
+            <a href="{% url 'store:marktplatz_jobs' %}"><h2>Jobs</h2></a>
+            <br>
+            <a href="{% url 'store:marktplatz_jobs' %}"><p>Aktuelle Stellen in der Schweizer Gastronomie.</p></a>
+           
+            
+            
+
+          </div><!-- mp overview box bottom end -->
+
+        </div><!-- mp overview box end -->
+
+
+      </div><!-- mp overview end -->
+        
+        
+
+
+  </div><!-- storepreview end -->
+</div><!-- container end -->
+
+{% endblock content %}
