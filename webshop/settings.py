@@ -18,15 +18,7 @@ import dj_database_url
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-ALLOWED_HOSTS = [
-    'gastroplatz.ch',
-    'https://www.gastroplatz.ch/'
-    'gebomp.herokuapp.com',
-    'https://gebomp.herokuapp.com/',
-    'gebomp.herokuapp.com/'
-
-
-        ]
+ALLOWED_HOSTS = ['https://gastroplatz.ch', 'https://127.0.0.1:8000/', 'https://gebomp.herokuapp.com', 'gastroplatz.ch', 'www.gastroplatz.ch','https://www.gastroplatz.ch','gebomp.herokuapp.com' ]
 
 
 if config('STAGE') == 'dev':
@@ -57,19 +49,6 @@ else:
     CSRF_COOKIE_DOMAIN = '.gastroplatz.ch'
     SECURE_SSL_REDIRECT = True
     #end
-
-    
-
-        CORS_ORIGIN_ALLOW_ALL = False
-        CORS_ALLOW_CREDENTIALS = True
-
-        CORS_ORIGIN_WHITELIST = [
-            'gastroplatz.ch',
-            'https://www.gastroplatz.ch/',
-            'https://gebomp.herokuapp.com/',
-            'gebomp.herokuapp.com/',
-            
-        ]
 
     DATABASES = {
             'default': {
