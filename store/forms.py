@@ -255,11 +255,11 @@ class RegistrationForm(SignupForm):
 
 	phone = forms.CharField(max_length=500, required=True, label="",
 					widget=forms.TextInput(attrs={
-						'placeholder': 'Telefon-Nr.',
+						'placeholder': 'Telefon / Mobile-Nr.',
 						'class': 'form-control'
 
 						}),
-					help_text='Bitte eine gültige Telefon-Nr. eingeben')
+					help_text='Bitte eine gültige Telefon oder Mobile-Nr. eingeben')
 
 	mobile = forms.CharField(max_length=500, required=False, label="",
 					widget=forms.TextInput(attrs={
