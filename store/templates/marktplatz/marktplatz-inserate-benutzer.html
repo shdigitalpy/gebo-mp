@@ -7,12 +7,19 @@
 {% if user.is_authenticated %}
 <div class="container padding">
   <h1>Alle Inserate von {{ request.user.profile.firmenname }}</h1><br>
-  <h2>Zuständig: {{ request.user.first_name }} {{ request.user.last_name }}</h2>
+  
 
   <p>Das ist die Übersicht von Ihnen veröffentlichte Inserate.</p>
  
-<div class="row padding storepreview">
+<div class="row storepreview">
+        
+
+
+
+       
+
       <div class="mydichtungen">
+         <h2>Occasion Inserate</h2><br>
       <div class="table-responsive">
         <table class="table">
         <thead>
@@ -44,12 +51,49 @@
         </table>
       </div><!-- end table responsive -->
       
-    </div><!-- end mydichtungen -->
+    </div><!-- end table marktplatz occasion -->
+
+
+
+    <div class="mydichtungen padding">
+      <h2>Job Inserate</h2><br>
+      <div class="table-responsive">
+        <table class="table">
+        <thead>
+        <tr>
+          <th scope="col">Titel</th>
+
+          <th scope="col">Ändern</th>
+        
+          <th scope="col">Löschen</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+         {% for element in myinseratjobs %}
+        <tr> 
+             
+        
+          <th scope="row">{{ element.title }}</th>
+          <td><a href="{% url 'store:marktplatz_jobinserat_edit' element.id %}"><i style="color:var(--red)" class="far fa-edit"></i>
+           </a></td>
+          <td><a href="{% url 'store:marktplatz_jobinserat_delete' element.id %}"><i style="color:var(--red)" class="far fa-trash-alt"></i>
+           </a></td>
+      </tr>
+        {% endfor %}
+      </tbody>
+        </table>
+      </div><!-- end table responsive -->
+      
+    </div><!-- end table marktplatz jobs -->
 
 
 
 
   </div><!-- storepreview end -->
+
+
+
   </div><!-- container end -->
 
 

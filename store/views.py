@@ -98,6 +98,13 @@ def marktplatz_jobinserat_ändern(request, pk):
 				}
 	return render(request, 'marktplatz/marktplatz-inserat-erfassen.html', context)
 
+@login_required
+def marktplatz_jobinserat_delete(request, pk):
+	eintrag = get_object_or_404(JobsMarketplace, pk=pk)
+	eintrag.delete()
+	messages.info(request, "Das Inserat wurde gelöscht.")
+	return redirect("store:myinserate")
+
 
 @login_required
 def marktplatz_jobinserat_erfassen(request):
@@ -122,6 +129,31 @@ def marktplatz_jobinserat_erfassen(request):
 	return render(request, 'marktplatz/marktplatz-jobs-erstellen.html', context)
 
 
+@login_required
+def marktplatz_jobinserat_edit(request, pk):
+	inserat = get_object_or_404(JobsMarketplace, id=pk)
+
+	if request.method == "POST":
+		form = InseratJobsCreateForm(request.POST or None, request.FILES or None, instance=inserat)
+		if form.is_valid():
+			mp = form.save(commit=False)
+			mp.user = request.user
+			mp.save()
+			
+			return redirect('store:marktplatz_jobinserat_summary', pk=inserat.id)
+
+		else:
+			messages.error(request, "Error")
+
+	else: 
+		form = form = InseratJobsCreateForm(instance=inserat)
+
+	context = {
+		'form': form,
+				}
+	return render(request, 'marktplatz/marktplatz-jobs-edit.html', context)
+
+
 
 def marktplatz_video(request):
 	context = {
@@ -131,22 +163,61 @@ def marktplatz_video(request):
 
 def marktplatz_jobs(request):
 	mp_categories = MP_JobsCategory.objects.all().order_by('name')
+	JOBS_CHOICES = (
+		(' Aargau',' Aargau'),
+		(' Appenzell Innerrhoden',' Appenzell Innerrhoden'),
+		(' Appenzell Ausserrhoden',' Appenzell Ausserrhoden'),
+		(' Bern',' Bern'),
+		(' Basel-Landschaft',' Basel-Landschaft'),
+		(' Basel-Stadt',' Basel-Stadt'),
+		(' Freiburg',' Freiburg'),
+		(' Genf',' Genf'),
+		(' Glarus',' Glarus'),
+		(' Graubünden',' Graubünden'),
+		(' Jura',' Jura'),
+		(' Luzern',' Luzern'),
+		(' Neuenburg',' Neuenburg'),
+		(' Nidwalden',' Nidwalden'),
+		(' Obwalden',' Obwalden'),
+		(' St. Gallen',' St. Gallen'),
+		(' Schaffhausen',' Schaffhausen'),
+		(' Solothurn',' Solothurn'),
+		(' Schwyz',' Schwyz'),
+		(' Thurgau',' Thurgau'),
+		(' Tessin',' Tessin'),
+		(' Uri',' Uri'),
+		(' Waadt',' Waadt'),
+		(' Wallis',' Wallis'),
+		(' Zug',' Zug'),
+		(' Zürich',' Zürich')
+		)
+	filter_query = request.GET.get('category', '')
 	search_query = request.GET.get('search', '')
 
 	if search_query:
 		mp_inserate = JobsMarketplace.objects.filter(Q(place__icontains=search_query) | Q(region__icontains=search_query))
 
+		if filter_query:
+			mp_inserate = JobsMarketplace.objects.filter(Q(region__icontains=filter_query))
+		else:
+			pass
 	else:
-		mp_inserate = JobsMarketplace.objects.all()
+		if filter_query:
+			mp_inserate = JobsMarketplace.objects.filter(Q(region__icontains=filter_query))
+		else: 
+			mp_inserate = JobsMarketplace.objects.all()
 
 
 	context = {
 
 	'mp_inserate': mp_inserate,
 	'mp_categories': mp_categories,
+	'regions': JOBS_CHOICES,
 	
 
 	}
+
+
 	return render (request, 'marktplatz/marktplatz-jobs.html', context)
 
 def marktplatz_overview(request):
@@ -341,9 +412,11 @@ def marktplatz_main(request):
 @login_required
 def myinserate(request):
 	myinserat = Marketplace.objects.filter(user=request.user)
+	myinseratjobs = JobsMarketplace.objects.filter(user=request.user)
 
 	context = { 
 			'myinserat': myinserat,
+			'myinseratjobs' : myinseratjobs,
 			
 			}
 	return render(request, 'marktplatz/marktplatz-inserate-benutzer.html', context)

@@ -53,8 +53,10 @@ urlpatterns = [
 	path('marktplatz-jobs', views.marktplatz_jobs, name='marktplatz_jobs'),
 	path('marktplatz/jobinserat/erfassen', views.marktplatz_jobinserat_erfassen, name='marktplatz_jobinserat_erfassen'),
 	path('marktplatz/jobinserat/summary/<int:pk>', views.marktplatz_jobinserat_summary, name="marktplatz_jobinserat_summary"),
-	path('marktplatz/jobinserat/aendern/<int:pk>', views.marktplatz_jobinserat_ändern, name='marktplatz_jobinserat_ändern'),
+	path('marktplatz/jobinserat/edit/<int:pk>', views.marktplatz_jobinserat_edit, name='marktplatz_jobinserat_edit'),
 	path('marktplatz/jobinserat/erfolg/<int:pk>', views.marktplatz_jobinserat_erfolg, name="marktplatz_jobinserat_erfolg"),
+	path('marktplatz/jobinserat/löschen/<int:pk>', views.marktplatz_jobinserat_delete, name="marktplatz_jobinserat_delete"),
+
 
 	path('searchbar', views.searchbar, name='searchbar'),
 	path('kontakt', views.kontakt, name='kontakt'),
