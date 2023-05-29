@@ -1,5 +1,5 @@
 .storepreview {
-	margin: 5rem 0;
+	margin: 2rem 0;
 }
 
 
@@ -124,7 +124,6 @@
 	-webkit-box-align: stretch;
 	    -ms-flex-align: stretch;
 	        align-items: stretch;
-	width:100%;
 
 }
 
@@ -134,9 +133,10 @@
 	background-color: var(--lightgrey);
 }
 
+
 .mp-main-jobs-right {
 	width:100%;
-	padding: 0 2rem;
+	padding: 0 1rem;
 	margin: 10px 0;
 	border-bottom: 1px solid var(--lightgrey);
 }
